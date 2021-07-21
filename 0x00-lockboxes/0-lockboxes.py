@@ -19,11 +19,9 @@ def canUnlockAll(boxes):
                 if index != i and index in boxes[i]:
                     unlock_result.append("unlock")
                     unlock = True
-                    continue
+                    break
             if unlock is False:
                 unlock_result.append("lock")
-            else:
-                continue
         if "lock" not in unlock_result:
             return True
     return False
