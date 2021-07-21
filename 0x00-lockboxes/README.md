@@ -1,3 +1,5 @@
+## About
+This is a project to keep trainning in logic for technical interviews.  
 
 **[0-lockboxes.py](./0-lockboxes.py)** - Lockboxes:
 You have  `n`  number of locked boxes in front of you. Each box is numbered sequentially from  `0`  to  `n - 1`  and each box may contain keys to the other boxes.
