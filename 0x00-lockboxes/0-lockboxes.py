@@ -5,6 +5,8 @@
 def canUnlockAll(boxes):
     """Method that determines if all the boxes can be opened"""
     total_boxes = len(boxes)
+    if total_boxes <= 1:
+        return True
     key_found_box_0 = False
     for number in boxes[0]:
         if number >= 1 and number <= total_boxes:
