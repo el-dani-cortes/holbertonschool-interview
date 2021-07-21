@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Lockboxes task"""
 
+
 def canUnlockAll(boxes):
     """Method that determines if all the boxes can be opened"""
     total_boxes = len(boxes)
@@ -22,5 +23,5 @@ def canUnlockAll(boxes):
             else:
                 continue
         if "lock" not in unlock_result:
-            return True 
+            return True
     return False
