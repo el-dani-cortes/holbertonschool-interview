@@ -205,3 +205,5 @@ carrie@ubuntu:0x01$ ./insert
 1024
 carrie@ubuntu:0x01$  
 ```
+## Authors
+Daniel Cortes - [Github](https://github.com/el-dani-cortes)
