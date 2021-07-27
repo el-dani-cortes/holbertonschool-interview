@@ -14,7 +14,6 @@ This is a project to keep trainning in logic for technical interviews.
 - All your files must be executable
 
 ## File Descriptions
-
 ### Mandatory
 
 **[0-lockboxes.py](./0-lockboxes.py)** - Lockboxes:
@@ -50,11 +49,14 @@ print(canUnlockAll(boxes))
 carrie@ubuntu:~/0x00-lockboxes$
 ```
 
+
+## Expected result
 ```
 carrie@ubuntu:~/0x00-lockboxes$ ./main_0.py
 True
 True
 False
 carrie@ubuntu:~/0x00-lockboxes$
-
 ```
+## Authors
+Daniel Cortes - [Github](https://github.com/el-dani-cortes)
