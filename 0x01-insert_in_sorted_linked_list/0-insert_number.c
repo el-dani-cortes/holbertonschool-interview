@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "lists.h"
 /**
  * insert_node - Insert a node by order in the sorted linked list
@@ -16,7 +17,6 @@ listint_t *insert_node(listint_t **head, int number)
 	if (new_node == NULL)
 		return (NULL);
 	behind = *head;
-	ahead = behind->next;
 	new_node->n = number;
 	new_node->next = NULL;
 	if (*head == NULL)
@@ -30,22 +30,22 @@ listint_t *insert_node(listint_t **head, int number)
 		*head = new_node;
 		return (new_node);
 	}
+	ahead = behind->next;
 	while (ahead != NULL)
 	{
 		if (ahead->n >= number)
 		{
 			new_node->next = ahead;
 			behind->next = new_node;
-			return (new_node);
+			break;
 		}
 		if (ahead->n < number && ahead->next == NULL)
 		{
-			new_node->next = NULL;
 			ahead->next = new_node;
-			return (new_node);
+			break;
 		}
 		behind = behind->next;
 		ahead = ahead->next;
 	}
-	return (NULL);
+	return (new_node);
 }
