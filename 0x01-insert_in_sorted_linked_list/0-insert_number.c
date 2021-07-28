@@ -10,43 +10,42 @@ listint_t *insert_node(listint_t **head, int number)
 {
 	listint_t *ahead = NULL, *behind = NULL, *new_node = NULL;
 
-	if (head != NULL) 
+	if (head == NULL)
+		return (NULL);
+	new_node = malloc(sizeof(listint_t));
+	if (new_node == NULL)
+		return (NULL);
+	behind = *head;
+	ahead = behind->next;
+	new_node->n = number;
+	new_node->next = NULL;
+	if (*head == NULL)
 	{
-		new_node = malloc(sizeof(listint_t));
-		if (new_node == NULL)
-			return (NULL);
-		behind = *head;
-		ahead = behind->next;
-		new_node->n = number;
-		new_node->next = NULL;
-		if (*head == NULL)
+		*head = new_node;
+		return (new_node);
+	}
+	if (number <= behind->n)
+	{
+		new_node->next = *head;
+		*head = new_node;
+		return (new_node);
+	}
+	while (ahead != NULL)
+	{
+		if (ahead->n >= number)
 		{
-			*head = new_node;
+			new_node->next = ahead;
+			behind->next = new_node;
 			return (new_node);
 		}
-		if (number <= behind->n)
+		if (ahead->n < number && ahead->next == NULL)
 		{
-			new_node->next = *head;
-			*head = new_node;
+			new_node->next = NULL;
+			ahead->next = new_node;
 			return (new_node);
 		}
-		while (ahead != NULL)
-		{
-			if (ahead->n >= number)
-			{
-				new_node->next = ahead;
-				behind->next = new_node;
-				return (new_node);
-			}
-			if (ahead->n < number && ahead->next == NULL)
-			{
-				new_node->next = NULL;
-				ahead->next = new_node;
-				return (new_node);
-			}
-			behind = behind->next;
-			ahead = ahead->next;
-		}
+		behind = behind->next;
+		ahead = ahead->next;
 	}
 	return (NULL);
 }
