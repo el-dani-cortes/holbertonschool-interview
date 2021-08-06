@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "C/C++: gcc-9 build active file",
+      "command": "/bin/gcc-9",
+      "args": [
+        "-g",
+        "./binary_tree_print.c",
+        "./1-main.c",
+        "./1-heap_insert.c",
+        "./0-binary_tree_node.c",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-pedantic",
+        "-o",
+        "${fileDirname}/1-heap_insert"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "compiler: /bin/gcc-9"
+    }
+  ]
+}

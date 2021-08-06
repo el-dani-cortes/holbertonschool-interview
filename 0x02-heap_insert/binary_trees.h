@@ -26,4 +26,8 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 /*Prints a binary tree*/
 void binary_tree_print(const binary_tree_t *tree);
 
+
+heap_t *swap_node(heap_t *node, int value, int side);
+heap_t *heap_insert(heap_t **root, int value);
+
 #endif /* LISTS_H */
