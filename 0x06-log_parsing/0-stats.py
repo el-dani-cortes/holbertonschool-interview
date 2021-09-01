@@ -42,7 +42,7 @@ def get_data_from_stdin():
                         print_stats(file_size_total, status_code, order_codes)
                         line_counts = 0
             except EOFError:
-                if line_counts >= 1 and line_counts < 10:
+                if line_counts < 10:
                     print_stats(file_size_total, status_code, order_codes)
                 break
     except KeyboardInterrupt:
