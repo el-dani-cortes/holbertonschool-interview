@@ -2,7 +2,6 @@
 """
 Print stats from server's logs
 """
-import re
 import sys
 
 
@@ -16,8 +15,8 @@ def print_stats(file_size_total, status_code, order_codes):
 
 def get_data_from_stdin():
     """Get data form standard input"""
-    status_code = {"200": 0, "301": 0, "400": 0,
-                   "401": 0, "403": 0, "404": 0, "405": 0, "500": 0}
+    status_codes = {"200": 0, "301": 0, "400": 0,
+                    "401": 0, "403": 0, "404": 0, "405": 0, "500": 0}
     order_codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
     file_size_total = 0
     line_counts = 0
@@ -25,22 +24,25 @@ def get_data_from_stdin():
         while True:
             try:
                 line = input()
-                data = re.findall(r' (\d{3})\s(\d*)$', line)
-                if data and data[0][0] in status_code.keys():
+                data = line.split()
+                if data and len(data) > 2:
                     line_counts += 1
-                    status_code[data[0][0]] += 1
-                    file_size_total += int(data[0][1])
+                    file_size_total += int(data[-1])
+                    try:
+                        status_codes[data[-2]] += 1
+                    except Exception:
+                        pass
                 else:
                     continue
                 if line_counts >= 10:
-                    print_stats(file_size_total, status_code, order_codes)
+                    print_stats(file_size_total, status_codes, order_codes)
                     line_counts = 0
             except EOFError:
                 if line_counts < 10:
-                    print_stats(file_size_total, status_code, order_codes)
+                    print_stats(file_size_total, status_codes, order_codes)
                 break
     except KeyboardInterrupt:
-        print_stats(file_size_total, status_code, order_codes)
+        print_stats(file_size_total, status_codes, order_codes)
 
 
 if __name__ == "__main__":
