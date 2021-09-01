@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import sys
 import re
+"""
+Print stats from server's logs
+"""
 
 
 def print_stats(file_size_total, status_code, order_codes):
