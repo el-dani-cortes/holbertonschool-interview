@@ -47,6 +47,7 @@ def get_data_from_stdin():
                 break
     except KeyboardInterrupt:
         print_stats(file_size_total, status_code, order_codes)
+        raise
 
 
 if __name__ == "__main__":
