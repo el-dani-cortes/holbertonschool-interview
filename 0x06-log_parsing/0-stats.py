@@ -41,6 +41,8 @@ def get_data_from_stdin():
                     if line_counts >= 10:
                         print_stats(file_size_total, status_code, order_codes)
                         line_counts = 0
+                else:
+                    continue
             except EOFError:
                 if line_counts < 10:
                     print_stats(file_size_total, status_code, order_codes)
