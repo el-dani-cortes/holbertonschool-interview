@@ -10,7 +10,8 @@ def print_stats(file_size_total, status_code, order_codes):
     """Print the stats"""
     print("File size: {}".format(file_size_total))
     for code in order_codes:
-        print("{}: {}".format(code, status_code[code]))
+        if status_code[code] != 0:
+            print("{}: {}".format(code, status_code[code]))
 
 
 def get_data_from_stdin():
@@ -35,7 +36,7 @@ def get_data_from_stdin():
                     file_size_total += int(data[0][1])
                 else:
                     continue
-                if line_counts > 10:
+                if line_counts % 10 == 0 or line_counts != 1:
                     print_stats(file_size_total, status_code, order_codes)
                     line_counts = 1
     except KeyboardInterrupt:
