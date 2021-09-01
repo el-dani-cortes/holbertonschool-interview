@@ -16,10 +16,6 @@ def print_stats(file_size_total, status_code, order_codes):
 
 def get_data_from_stdin():
     """Get data form standard input"""
-    log_pattern = (r'\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}'
-                   r'(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b -'
-                   r' \[[0-9]*-[0-9]*-[0-9]* [0-9]*:[0-9]*:[0-9]*\.[0-9]*\] '
-                   r'"GET \/projects\/260 HTTP\/1\.1" [0-9]* [0-9]*$')
     status_code = {"200": 0, "301": 0, "400": 0,
                    "401": 0, "403": 0, "404": 0, "405": 0, "500": 0}
     order_codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
@@ -29,20 +25,17 @@ def get_data_from_stdin():
         while True:
             try:
                 line = input()
-                check_pattern = re.search(log_pattern, line)
-                if check_pattern:
-                    data = re.findall(r' (\d{3})\s(\d*)$', line)
-                    if data[0][0] in status_code.keys():
-                        line_counts += 1
-                        status_code[data[0][0]] += 1
-                        file_size_total += int(data[0][1])
-                    else:
-                        continue
-                    if line_counts >= 10:
-                        print_stats(file_size_total, status_code, order_codes)
-                        line_counts = 0
+                print(line)
+                data = re.findall(r' (\d{3})\s(\d*)$', line)
+                if data and data[0][0] in status_code.keys():
+                    line_counts += 1
+                    status_code[data[0][0]] += 1
+                    file_size_total += int(data[0][1])
                 else:
                     continue
+                if line_counts >= 10:
+                    print_stats(file_size_total, status_code, order_codes)
+                    line_counts = 0
             except EOFError:
                 if line_counts < 10:
                     print_stats(file_size_total, status_code, order_codes)
