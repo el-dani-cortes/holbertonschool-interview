@@ -25,7 +25,6 @@ def get_data_from_stdin():
         while True:
             try:
                 line = input()
-                print(line)
                 data = re.findall(r' (\d{3})\s(\d*)$', line)
                 if data and data[0][0] in status_code.keys():
                     line_counts += 1
