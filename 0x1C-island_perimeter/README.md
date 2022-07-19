@@ -1,1 +1,1 @@
-# 0x1C. Island Perimeter
+# Island Perimeter
